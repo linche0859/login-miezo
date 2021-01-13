@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>雲峰-聚峰館</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        grid-template-rows: 1fr;
+        place-items: center;
+        min-height: 100vh;
+      }
+      button {
+        padding: 1rem 1.5rem;
+        font-size: 1.5rem;
+        background-color: #198754;
+        color: #ffffff;
+        border: 1px solid #198754;
+        outline: 0;
+        border-radius: 0.25rem;
+        box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.5);
+      }
+      button:active {
+        background-color: #157347;
+        border-color: #146c43;
+        box-shadow: 0 0 0 0.25rem rgba(60, 153, 110, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <button>登入</button>
+    <script>
+      (function () {
+        const loginHandler = async () => {
+          try {
+            const formData = new FormData();
+            formData.append('QRCODE', '447A6D4F5341L08N02');
+            formData.append('PASS', '5706');
+            const request = new Request('https://miezo-qrlock.com.tw/login', {
+              method: 'POST',
+              mode: 'cors',
+              body: formData,
+            });
+            await fetch(request);
+          } catch (e) {
+            // alert(e);
+          }
+        };
+
+        document
+          .querySelector('button')
+          .addEventListener('click', loginHandler);
+      })();
+    </script>
+  </body>
+</html>
